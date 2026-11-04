@@ -1,0 +1,27 @@
+name: Fetch tourism images
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download licensed tourism images
+        run: |
+          mkdir -p assets/tourism
+          curl --fail --location --retry 4 --user-agent "Mozilla/5.0 EmiliUdulopark/1.0" "https://upload.wikimedia.org/wikipedia/commons/7/7c/Holloko_Village_Center.jpg" -o assets/tourism/holloko.jpg
+          curl --fail --location --retry 4 --user-agent "Mozilla/5.0 EmiliUdulopark/1.0" "https://upload.wikimedia.org/wikipedia/commons/c/ce/Ipolytarnoc_01.jpg" -o assets/tourism/ipolytarnoc.jpg
+          curl --fail --location --retry 4 --user-agent "Mozilla/5.0 EmiliUdulopark/1.0" "https://upload.wikimedia.org/wikipedia/commons/e/e7/Somosko_castle.jpg" -o assets/tourism/somosko.jpg
+          curl --fail --location --retry 4 --user-agent "Mozilla/5.0 EmiliUdulopark/1.0" "https://upload.wikimedia.org/wikipedia/commons/a/a2/Salgovar_03.jpg" -o assets/tourism/salgo.jpg
+          file assets/tourism/*
+      - name: Commit images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/tourism
+          if ! git diff --cached --quiet; then
+            git commit -m "Add local licensed tourism images"
+            git push
+          fi
