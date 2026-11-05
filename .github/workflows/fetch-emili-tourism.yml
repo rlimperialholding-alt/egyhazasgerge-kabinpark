@@ -1,0 +1,28 @@
+name: Fetch Emili tourism images
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download licensed tourism images
+        run: |
+          mkdir -p assets/tourism
+          curl --fail --location --retry 4 --user-agent "Mozilla/5.0 EmiliUdulopark/2.0" "https://commons.wikimedia.org/wiki/Special:Redirect/file/B%C3%BCkksz%C3%A9k%2C%20f%C3%BCrd%C5%91%202024%2003.jpg" -o assets/tourism/bukkszek.jpg
+          curl --fail --location --retry 4 --user-agent "Mozilla/5.0 EmiliUdulopark/2.0" "https://commons.wikimedia.org/wiki/Special:Redirect/file/Demj%C3%A9n%20Thermal%20Spa%2C%204.jpg" -o assets/tourism/demjen.jpg
+          curl --fail --location --retry 4 --user-agent "Mozilla/5.0 EmiliUdulopark/2.0" "https://commons.wikimedia.org/wiki/Special:Redirect/file/Filakovo%20Castle%20Sk%2001.JPG" -o assets/tourism/filakovo.jpg
+          curl --fail --location --retry 4 --user-agent "Mozilla/5.0 EmiliUdulopark/2.0" "https://commons.wikimedia.org/wiki/Special:Redirect/file/Lucenec%20synagogue.jpg" -o assets/tourism/lucenec.jpg
+          curl --fail --location --retry 4 --user-agent "Mozilla/5.0 EmiliUdulopark/2.0" "https://commons.wikimedia.org/wiki/Special:Redirect/file/Cerov%C3%A1%20vrchovina%20-%20panoramio.jpg" -o assets/tourism/cerova.jpg
+          file assets/tourism/bukkszek.jpg assets/tourism/demjen.jpg assets/tourism/filakovo.jpg assets/tourism/lucenec.jpg assets/tourism/cerova.jpg
+      - name: Commit images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/tourism
+          if ! git diff --cached --quiet; then
+            git commit -m "Add licensed Emili tourism images"
+            git push
+          fi
