@@ -36,3 +36,57 @@
 @media(max-width:600px){.cabin-visuals,.park-detail-gallery{grid-template-columns:1fr}.cabin-shot.hero-shot{grid-column:span 1}.cabin-shot,.park-shot{border-radius:11px}}
 
 html{scroll-padding-top:82px}section[id],article[id]{scroll-margin-top:82px}
+
+/* V3 ingatlan-információs réteg */
+.project-facts{background:#17110f;color:#fff;padding:0}
+.facts-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:0;padding:0}
+.facts-grid article{padding:24px 18px;border-right:1px solid rgba(255,255,255,.12)}
+.facts-grid article:last-child{border-right:0}
+.facts-grid b{display:block;font-size:25px;color:#ff6531;letter-spacing:-.03em}
+.facts-grid span{display:block;margin-top:6px;font-size:12px;line-height:1.4;color:#ddcfca}
+.park-master{padding-top:96px;padding-bottom:96px}
+.master-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.master-grid figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.master-grid img{width:100%;height:460px;object-fit:contain;background:#f7f2eb}
+.master-grid figcaption{padding:16px 18px;font-weight:800}
+.price-card{margin:18px 0;background:#17110f;color:#fff;border-radius:17px;padding:22px}
+.price-card>span{display:block;font-size:10px;letter-spacing:.15em;font-weight:900;color:#ff8152}
+.price-card>strong{display:block;font-size:34px;line-height:1;margin:8px 0 13px;color:#fff}
+.price-facts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:13px}
+.price-facts b{background:rgba(255,255,255,.08);padding:10px;border-radius:9px;font-size:12px}
+.price-card small{color:#d9cbc4;line-height:1.5;display:block}
+.floorplan-card{grid-column:1/-1;display:grid;grid-template-columns:.7fr 1.3fr;gap:24px;align-items:center;margin-top:26px;padding:28px;background:#e9ded2;border-radius:20px}
+.floorplan-card h4{font-size:28px;margin:7px 0 10px}
+.floorplan-card p{color:#5c514c;line-height:1.55}
+.plan-shot{border:0;background:#fff;border-radius:14px;padding:0;overflow:hidden;cursor:zoom-in}
+.plan-shot img{width:100%;height:auto;display:block}
+.technical{padding:100px 0;background:#13271a;color:#fff}
+.technical .eyebrow{color:#ff8a50}.technical .section-title p{color:#d3ddd5;max-width:860px;line-height:1.6}
+.layer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+.layer-grid article{background:#1d3826;border:1px solid rgba(255,255,255,.1);padding:24px;border-radius:16px}
+.layer-grid b{display:flex;width:34px;height:34px;align-items:center;justify-content:center;background:#e95c2a;border-radius:50%;margin-bottom:14px}
+.layer-grid h3{font-size:20px;margin:0 0 9px}.layer-grid p{font-size:14px;line-height:1.5;color:#d4dfd6}
+.roof-note{margin-top:18px;padding:22px;border-radius:14px;background:#f0e6da;color:#392e29;line-height:1.55}
+.finance{padding:100px 0;background:#efe5da}
+.finance-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.finance-grid article{background:#fff;padding:25px;border:1px solid var(--line);border-radius:17px}
+.finance-grid b{font-size:30px;color:#d74b24}.finance-grid h3{font-size:21px;margin:10px 0}.finance-grid p{color:#5d514b;line-height:1.55}
+.finance-note{margin-top:22px;padding:18px 20px;background:#fff6ef;border-left:5px solid #d84b25;line-height:1.55}
+@media(max-width:1100px){
+ .facts-grid{grid-template-columns:repeat(3,1fr)}
+ .master-grid{grid-template-columns:1fr}
+ .layer-grid,.finance-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+ .facts-grid{grid-template-columns:1fr 1fr}
+ .facts-grid article{border-bottom:1px solid rgba(255,255,255,.1)}
+ .master-grid img{height:auto}
+ .cabin-card{display:flex;flex-direction:column}
+ .cabin-copy{order:1}
+ .cabin-visuals{order:2}
+ .floorplan-card{order:3;grid-template-columns:1fr;padding:18px}
+ .price-facts{grid-template-columns:1fr}
+ .price-card>strong{font-size:29px}
+ .layer-grid,.finance-grid{grid-template-columns:1fr}
+ .park-master{padding-top:70px;padding-bottom:70px}
+}
